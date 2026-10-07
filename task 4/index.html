@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Solar Inventory Management</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <!-- LOGIN -->
+    <section id="loginPage" class="page login-page">
+
+        <div class="overlay"></div>
+
+        <div class="login-card">
+            <h1>Solar Inventory</h1>
+            <p>Inventory Management System</p>
+
+            <form id="loginForm">
+
+                <label>Username</label>
+                <input type="text" id="username"
+                       placeholder="Enter username" required>
+
+                <label>Password</label>
+                <input type="password" id="password"
+                       placeholder="Enter password" required>
+
+                <button type="submit">Login</button>
+
+                <a href="#" class="forgot">
+                    Forgot username?
+                </a>
+
+            </form>
+        </div>
+
+    </section>
+
+
+    <!-- DASHBOARD -->
+    <section id="dashboardPage" class="page dashboard-page hidden">
+
+        <aside class="sidebar">
+
+            <h2>☀ Solar</h2>
+
+            <button onclick="showPage('dashboardPage')">
+                Dashboard
+            </button>
+
+            <button onclick="showPage('equipmentPage')">
+                Equipment
+            </button>
+
+            <button onclick="showPage('addPage')">
+                Add Product
+            </button>
+
+            <button onclick="showPage('reportsPage')">
+                Reports
+            </button>
+
+            <button>
+                Alerts
+            </button>
+
+            <div class="sidebar-bottom">
+                <button onclick="logout()" class="logout">
+                    Log out
+                </button>
+            </div>
+
+        </aside>
+
+
+        <main class="content">
+
+            <h1>Inventory Dashboard</h1>
+
+            <div class="stats">
+
+                <div class="stat-card">
+                    <span>☀</span>
+                    <h3>Solar Panels</h3>
+                    <strong>246</strong>
+                </div>
+
+                <div class="stat-card">
+                    <span>⚡</span>
+                    <h3>Inverters</h3>
+                    <strong>281</strong>
+                </div>
+
+                <div class="stat-card warning">
+                    <span>⚠</span>
+                    <h3>Low Stock</h3>
+                    <strong>13</strong>
+                </div>
+
+                <div class="stat-card danger">
+                    <span>!</span>
+                    <h3>Out of Stock</h3>
+                    <strong>2</strong>
+                </div>
+
+            </div>
+
+
+            <div class="history">
+
+                <h2>Recent Inventory History</h2>
+
+                <p>
+                    <b>Product added:</b>
+                    Solar Panel 450W
+                    <span>10:30</span>
+                </p>
+
+                <p>
+                    <b>Stock updated:</b>
+                    Inverter
+                    <span>11:15</span>
+                </p>
+
+            </div>
+
+        </main>
+
+    </section>
+
+
+    <!-- ADD EQUIPMENT -->
+    <section id="addPage" class="page inner-page hidden">
+
+        <div class="form-container">
+
+            <h1>Add Solar Equipment</h1>
+
+            <label>Equipment name</label>
+            <input type="text"
+                   id="equipmentName"
+                   placeholder="Search">
+
+            <label>Equipment type</label>
+
+            <select id="equipmentType">
+                <option>Solar Panels</option>
+                <option>Inverters</option>
+                <option>Batteries</option>
+                <option>Accessories</option>
+            </select>
+
+            <label>Brand</label>
+            <input type="text"
+                   placeholder="Search">
+
+            <label>Model number</label>
+            <input type="text"
+                   placeholder="Search">
+
+            <div class="row">
+
+                <div>
+                    <label>Quantity</label>
+                    <input type="number" min="1">
+                </div>
+
+                <div>
+                    <label>Unit price</label>
+                    <input type="number" min="0">
+                </div>
+
+            </div>
+
+            <div class="form-buttons">
+
+                <button class="cancel"
+                        onclick="showPage('dashboardPage')">
+                    Cancel
+                </button>
+
+                <button onclick="addEquipment()">
+                    Add Equipment
+                </button>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- REPORTS -->
+    <section id="reportsPage" class="page inner-page reports-page hidden">
+
+        <div class="report-container">
+
+            <h1>Inventory Reports</h1>
+
+            <label>Report type</label>
+
+            <select>
+                <option>Stock Summary</option>
+                <option>Low Stock Report</option>
+                <option>Out-of-Stock Report</option>
+            </select>
+
+            <div class="row">
+
+                <div>
+                    <label>Date added</label>
+                    <input type="date">
+                </div>
+
+                <div>
+                    <label>To</label>
+                    <input type="date">
+                </div>
+
+            </div>
+
+            <button onclick="generateReport()">
+                Generate Report
+            </button>
+
+
+            <div class="report-result">
+
+                <h2>Solar Equipment Summary</h2>
+
+                <p>Solar Panels <strong>54</strong></p>
+                <p>Inverters <strong>45</strong></p>
+                <p>Batteries <strong>22</strong></p>
+                <p>Accessories <strong>67</strong></p>
+
+                <hr>
+
+                <p>
+                    Low-stock items
+                    <strong>11</strong>
+                </p>
+
+                <p>
+                    Out-of-stock items
+                    <strong>3</strong>
+                </p>
+
+                <button>Export</button>
+                <button>Print</button>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <script src="script.js"></script>
+
+</body>
+</html>
